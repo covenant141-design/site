@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Report</title>
+  <style>
+    :root {
+      --brand: #194564;
+      --ink: #111827;
+      --line: #9ca3af;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #f0fdfa;
+      color: var(--ink);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* A4 page canvas */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 16px auto;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 20mm 15mm;
+      box-sizing: border-box;
+    }
+    .center { text-align: center; }
+    h1, h2, h3 { margin: 0; }
+    .report-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 14mm 0 8mm;
+      text-align: center;
+      text-transform: none;
+      letter-spacing: .3px;
+    }
+    .emblem {
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: inline-block;
+      margin-bottom: 8mm;
+      background: #fafafa;
+    }
+    .meta-line { border-top: 1px solid var(--line); margin: 8mm 0; }
+    .subhead {
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--brand);
+      margin-top: 6px;
+    }
+    /* Table base */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #1f2937; padding: 6px 8px; font-size: 12px; }
+    th { font-weight: 700; }
+    /* Subtle caption */
+    .caption { font-size: 16px;  margin: 6px 0 2px; color: black; font-weight: 600 ; }
+    /* Summary table */
+    .summary th { background: #eef2f7; }
+    .summary td, .summary th { text-align: center; }
+    /* Utilities */
+    .mt-12 { margin-top: 12px; }
+    .mb-16 { margin-bottom: 16px; }
+    .right { text-align: right; }
+    .no-border { border: 0; }
+    .nowrap { white-space: nowrap; }
+    /* Brand line under title */
+    .brand-rule { height: 3px; background: var(--brand); margin: 6px 0 10px; }
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; width: auto; min-height: auto; padding: 14mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="center">
+      <span class="emblem"></span>
+      <div class="subhead">FTA HSRP Solutions Pvt. Ltd</div>
+      <div class="report-title">Test Report (01-01-2025 To 01-12-2025)</div>
+    </div>
+    <div class="brand-rule"></div>
+
+    <!-- Summary -->
+    <div class="caption">Summary</div>
+    <table class="summary mb-16">
+      <thead>
+        <tr>
+          <th class="nowrap">&nbsp;</th>
+          <th>TWO WHEELER</th>
+          <th>LMV</th> 
+          <th>HMV</th>         
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Pass</th>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th>Fail</th>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <td>2</td>
+          <td>2</td>
+          <td>4</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Details -->
+    <div class="caption">Details</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Sr No.</th>
+          <th>Date Of Test</th>
+          <th>Candidate ID</th>
+          <th>Application No.</th>
+          <th>Name</th>
+          <th>DOB</th>          
+          <th>TestType</th>
+          <th>Result</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+           <td>10-05-2006</td>
+          <td>602</td>
+          <td>3351147525</td>
+          <td>SARUKH ALAM</td>
+          <td>10-05-2006</td>
+          <td>TWO WHEELER</td>
+         
+          <td>Fail</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>10-05-2006</td>
+          <td>605</td>
+          <td>3406176825</td>
+          <td>SUHAIL ANSARY</td>
+          <td>18-05-2005</td>          
+          <td>TWO WHEELER</td>      
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>10-05-2006</td>
+          <td>607</td>
+          <td>3351147525</td>
+          <td>SARUKH ALAM</td>
+          <td>10-05-2006</td>
+          <td>LMV</td>
+          <td>Fail</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>10-05-2006</td>
+          <td>608</td>
+          <td>3406176825</td>
+          <td>SUHAIL ANSARY</td>
+          <td>18-05-2005</td>     
+          <td>LMV</td>        
+          <td>Fail</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+</html>
+
+

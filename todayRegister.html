@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accredited Driving Testing Center</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+  :root {
+  --primary-color: #194564;   /* Dark blue */
+  --secondary-color:#153649; /* Slightly darker shade */
+  --accent-color: #25678a;    /* Hover/active link */
+}
+  
+  
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color:#f0fdfa ;
+      color: #333;
+    }
+    
+    .sidebar {
+    height: 100vh;
+    background-color: #194564;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    width: 240px;
+  }
+  .sidebar h3 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    margin: 5px 0;
+    border-radius: 6px;
+  }
+  .sidebar a:hover {
+    background-color: #194564 ;
+  }
+    
+    
+ @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+    .main-content {
+      margin-left: 0;
+    }
+  }
+ 
+  /* Scrollbar styling (Chrome, Edge, Safari) */
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+  }
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .sidebar-header {
+    padding: 0;              /* remove default padding */
+  margin: 0;               /* remove margin */
+  border-bottom: 3px solid rgba(255,255,255,0.1);
+  border-bottom-style:double;
+  border-bottom-right-radius: 15px;
+  background:var(--primary-color);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  }
+  .sidebar h4 {
+     margin: 0;          
+     margin-bottom:9px;   
+     line-height: 1.2;
+     margin-left:27px;
+  
+  }
+  .sidebar a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 4px 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+  .sidebar a i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+  }
+  .sidebar a:hover, .sidebar .active {
+    background-color: transparent;
+    color: #fff;
+    transform: translateX(5px);
+    box-shadow: 0 9px 26px rgba(0,0,0,0.15);
+  }
+  .sidebar {
+    min-height: 100vh;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position:fixed;
+    top: 0;
+    left: 0;
+    bottom: 0; 
+    width: 250px;
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x:hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.4) transparent;
+    padding-bottom: 20px;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+  }
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+
+    /* Main Content */
+    .main {
+      margin-left: 245px;
+      padding: 20px;
+    }
+
+    .ii {
+      display: flex;
+      width: 98%;
+      height: 63px;
+      background-color: #194564;
+      color: #fff;
+      border-radius: 19px;
+      font-size: 1.5rem;
+      margin-top: -1px; 
+      margin-left: 30px ;   
+    }
+    h4 {
+      margin-left: 20px;
+      font-size: 25px;
+      margin-top: 17px;
+     
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      margin-top: 35px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      margin-left: 30px ;
+      height: auto  ;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #194564;
+    }
+
+    /* Scrollable Table */
+    .table-container {
+      max-height: 600px;
+      min-height: 400px;; /* vertical scroll limit */
+      overflow-y:auto;
+      overflow-x: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px; /* forces horizontal scroll if window too small */
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #194564;
+      color: #fff;
+      z-index: 2;
+    }
+
+    table th, table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    .btn-edit {
+      background-color: #f39c12;
+    }
+    .btn-edit:hover {
+      background-color: #d68910;
+    }
+
+    .btn-view {
+      background-color: #194564;
+    }
+    .btn-view:hover {
+      background-color: #25678a;
+    }
+     
+      
+    
+
+.input-group{
+margin-left: 1048px;
+margin-top: -45px;
+margin-bottom:7px;
+
+}
+    
+  </style>
+</head>
+<body>
+
+  <nav class="col-md-2 sidebar">
+        <div class="sidebar-header">
+          <h4><i class="fa fa-car"></i> <strong>FTA</strong></h4>
+        </div>
+        <a href="dashboard.html">
+           <i class="fa fa-tachometer-alt"></i> Dashboard
+        </a>
+        <a href="RegFormDONE.html">
+          <i class="fa fa-plus"></i> New Registration
+        </a>
+        
+<!-- Registration List -->
+<a href="#regSubmenu" class="d-flex justify-content-between align-items-center"  class="active">
+  <span><i class="fa fa-list"></i>Registration List</span>
+  <i class="fa fa-chevron-down" data-bs-toggle="collapse" data-bs-target="#regSubmenu"></i>
+</a>
+<div class="collapse ps-4" id="regSubmenu">
+  <a href="todayRegister.html"><i class="fa fa-calendar-day"></i> Today's Registration List</a>
+  <a href="dashboard.html"><i class="fa fa-calendar-alt"></i> Date wise Registration List</a>
+</div>
+
+<!-- Token Management -->
+<a href="#tokenSubmenu" class="d-flex justify-content-between align-items-center">
+  <span><i class="fa fa-ticket"></i> Token Management</span>
+  <i class="fa fa-chevron-down" data-bs-toggle="collapse" data-bs-target="#tokenSubmenu"></i>
+</a>
+<div class="collapse ps-4" id="tokenSubmenu">
+  <a href="rfidDONE.html"><i class="fa fa-plus-circle"></i> Add New RFID</a>
+  <a href="tokenListDONE.html"><i class="fa fa-list"></i> Token List</a>
+</div>
+
+
+        
+        <a href="reportOG.html">
+          <i class="fa fa-file-alt"></i> Daily Test Report
+        </a>
+        <a href="userManageDONE.html" >
+          <i class="fa fa-users"></i> User Management
+        </a>
+        <a href="canceAndremainiDONE.html" >
+          <i class="fa fa-times-circle"></i> Cancel Test Report
+        </a>
+        <a href="remainingTest.html">
+          <i class="fa fa-hourglass-half"></i> Remaining Test Entry
+        </a>
+        <a href="remainingTestEntry.html">
+            <i class="fa fa-file-alt"></i> Remaining Test Report
+        </a>
+        <a href="TestReport.html">
+          <i class="fa fa-trophy"></i> Result
+        </a>
+        <a href="dashboard.html">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </a>
+        
+      </nav>
+
+
+
+ 
+
+  <!-- Main Content -->
+  <div class="main">
+    <header class="ii">
+      <h4><strong>F TA HSRP Solutions Pvt. Ltd </strong></h4>
+    </header>
+
+    <div class="card">
+      <h3>Today's Registration Report</h3>
+      
+      <div class="input-group" style="max-width: 300px;">
+      <input type="text" id="searchInput" class="form-control" placeholder="Enter to search...">
+      <button class="btn btn-view" type="button"><i class="fa fa-search"></i></button>
+    </div>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Candidate UniqueID</th>
+              <th>Name</th>
+              <th>Test Type</th>
+              <th>Token No</th>
+              <th>Registration Date</th>
+              <th>Date Of Test</th>
+              <th>Action</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sample rows -->
+            <tr>
+              <td>1</td><td>802</td><td>Mahimaran</td><td>HMV</td><td>5</td><td>05-09-2025</td><td>05-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>2</td><td>803</td><td>Veena</td><td>HMV</td><td>14</td><td>05-09-2025</td><td>05-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>3</td><td>804</td><td>Ramesh</td><td>LMV</td><td>21</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>4</td><td>805</td><td>Sneha</td><td>LMV</td><td>34</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>5</td><td>806</td><td>Vikram</td><td>HMV</td><td>45</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>6</td><td>807</td><td>Kavya</td><td>LMV</td><td>52</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr><tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr><tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr><tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr><tr>
+              <td>7</td><td>808</td><td>Rahul</td><td>HMV</td><td>63</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>8</td><td>809</td><td>Priya</td><td>LMV</td><td>71</td><td>05-09-2025</td><td>06-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>9</td><td>810</td><td>Ashok</td><td>HMV</td><td>82</td><td>05-09-2025</td><td>07-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <tr>
+              <td>10</td><td>811</td><td>Deepa malinaa</td><td>LMV</td><td>93</td><td>05-09-2025</td><td>07-09-2025</td>
+              <td><button class="btn btn-edit">Edit</button></td>
+              <td><button class="btn btn-view">View</button></td>
+            </tr>
+            <!-- You can add more rows to see scroll in action -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function () {
+  let filter = this.value.toLowerCase();
+  let rows = document.querySelectorAll("#regTable tbody tr");
+
+  rows.forEach(row => {
+    let text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
